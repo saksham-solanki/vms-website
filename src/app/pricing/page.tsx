@@ -1,18 +1,14 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Section, SectionLabel, SectionTitle, SectionDescription } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { AnimateIn } from "@/components/ui/AnimateIn";
 import { FAQSchema, BreadcrumbSchema } from "@/components/seo/JsonLd";
-
-export const metadata: Metadata = {
-  title: "Pricing | Visitor Management from $36/mo",
-  description:
-    "VMS pricing starts at $36/month per location. Compare to Envoy ($109+), SwipedOn ($55+), and Greetly ($99+). Free plan available. No credit card required.",
-  openGraph: {
-    title: "VMS Pricing | Visitor Management from $36/mo",
-    description: "Enterprise-grade visitor management at a fraction of the cost. Free plan available.",
-  },
-};
+import {
+  ArrowRight, Check, CheckCircle2, X, Star,
+  Shield, HelpCircle, TrendingDown, Sparkles
+} from "lucide-react";
 
 const plans = [
   {
@@ -112,147 +108,168 @@ export default function PricingPage() {
       <FAQSchema questions={pricingFAQs} />
 
       {/* Hero */}
-      <Section background="white">
-        <div className="text-center max-w-3xl mx-auto">
-          <SectionLabel>Pricing</SectionLabel>
-          <SectionTitle>Simple, Transparent Pricing</SectionTitle>
-          <SectionDescription className="mx-auto">
-            Everything you need to manage visitors, starting free. No hidden fees.
-            No surprise charges. 30-day money-back guarantee on all paid plans.
-          </SectionDescription>
-        </div>
+      <Section background="mesh" spacing="lg">
+        <AnimateIn>
+          <div className="text-center max-w-3xl mx-auto">
+            <SectionLabel>Pricing</SectionLabel>
+            <SectionTitle>
+              Simple, Transparent Pricing. <br />
+              <span className="gradient-text">No Surprises.</span>
+            </SectionTitle>
+            <SectionDescription className="mx-auto">
+              Everything you need to manage visitors, starting free. No hidden fees.
+              No surprise charges. 30-day money-back guarantee on all paid plans.
+            </SectionDescription>
+          </div>
+        </AnimateIn>
 
         {/* Pricing Cards */}
-        <div className="mt-12 grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {plans.map((plan) => (
-            <div
-              key={plan.name}
-              className={`relative rounded-2xl border p-6 lg:p-8 ${
-                plan.highlight
-                  ? "border-primary-300 ring-2 ring-primary-100 bg-white shadow-lg scale-[1.02]"
-                  : "border-neutral-200 bg-white"
-              }`}
-            >
-              {plan.badge && (
-                <Badge variant="accent" className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  {plan.badge}
-                </Badge>
-              )}
-
-              <h3 className="text-lg font-bold text-neutral-900 font-heading">
-                {plan.name}
-              </h3>
-              <p className="text-sm text-neutral-500 mt-1">{plan.description}</p>
-
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-4xl font-extrabold text-neutral-900 font-heading">
-                  {plan.price}
-                </span>
-                <span className="text-sm text-neutral-400">{plan.period}</span>
-              </div>
-
-              <Button
-                variant={plan.ctaVariant}
-                size="md"
-                href={plan.ctaHref}
-                className="w-full mt-6"
+        <div className="mt-14 grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {plans.map((plan, i) => (
+            <AnimateIn key={plan.name} animation="fade-in-up" delay={i * 100}>
+              <div
+                className={`relative rounded-2xl border p-6 lg:p-8 h-full flex flex-col ${
+                  plan.highlight
+                    ? "border-cyan-300 ring-2 ring-cyan-100 bg-white shadow-xl shadow-cyan-100/50 relative z-10"
+                    : "border-slate-200/80 bg-white"
+                }`}
               >
-                {plan.cta}
-              </Button>
+                {plan.badge && (
+                  <Badge variant="glow" className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <Sparkles className="w-3 h-3" />
+                    {plan.badge}
+                  </Badge>
+                )}
 
-              <ul className="mt-6 space-y-3">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm text-neutral-600">
-                    <svg className="w-4 h-4 mt-0.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
+                <h3 className="text-lg font-bold text-slate-900 font-heading">
+                  {plan.name}
+                </h3>
+                <p className="text-sm text-slate-500 mt-1">{plan.description}</p>
+
+                <div className="mt-5 flex items-baseline gap-1">
+                  <span className="text-4xl font-extrabold text-slate-900 font-heading">
+                    {plan.price}
+                  </span>
+                  {plan.period && (
+                    <span className="text-sm text-slate-500">{plan.period}</span>
+                  )}
+                </div>
+
+                <Button
+                  variant={plan.ctaVariant}
+                  size="lg"
+                  href={plan.ctaHref}
+                  className="w-full mt-6"
+                  icon={<ArrowRight className="w-4 h-4" />}
+                >
+                  {plan.cta}
+                </Button>
+
+                <ul className="mt-6 space-y-3 flex-1">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2.5 text-sm text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 mt-0.5 text-cyan-500 shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </AnimateIn>
           ))}
         </div>
+
+        <AnimateIn animation="fade-in-up" delay={300}>
+          <p className="text-center text-sm text-slate-600 mt-8 flex items-center justify-center gap-2">
+            <Shield className="w-4 h-4 text-cyan-500" />
+            30-day money-back guarantee on all paid plans
+          </p>
+        </AnimateIn>
       </Section>
 
       {/* Competitor Comparison */}
       <Section background="light">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10">
-            <SectionLabel>Compare</SectionLabel>
-            <SectionTitle>How VMS Compares on Price</SectionTitle>
-            <SectionDescription className="mx-auto">
-              Same features. Same security. Dramatically lower price.
-            </SectionDescription>
-          </div>
+        <AnimateIn>
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <SectionLabel>Compare</SectionLabel>
+              <SectionTitle>How VMS Compares on Price</SectionTitle>
+              <SectionDescription className="mx-auto">
+                Same features. Same security. Dramatically lower price.
+              </SectionDescription>
+            </div>
 
-          <div className="space-y-3">
-            {[
-              { name: "Envoy", price: "$109–329/mo", annual5: "$6,540–19,740", highlight: false },
-              { name: "iLobby", price: "$199/mo", annual5: "$11,940", highlight: false },
-              { name: "Greetly", price: "$99/mo", annual5: "$5,940", highlight: false },
-              { name: "SwipedOn", price: "$55–169/mo", annual5: "$3,300–10,140", highlight: false },
-              { name: "VMS", price: "$36–90/mo", annual5: "$2,160–5,400", highlight: true },
-            ].map((row) => (
-              <div
-                key={row.name}
-                className={`flex items-center justify-between rounded-xl px-6 py-4 ${
-                  row.highlight
-                    ? "bg-accent-500 text-neutral-950 font-bold"
-                    : "bg-white border border-neutral-200"
-                }`}
-              >
-                <span className={`font-semibold ${row.highlight ? "" : "text-neutral-700"}`}>
-                  {row.name}
-                </span>
-                <div className="flex gap-8 text-right">
-                  <div>
-                    <div className={`text-sm ${row.highlight ? "text-neutral-800" : "text-neutral-400"}`}>Per location</div>
-                    <div className={`font-heading font-bold ${row.highlight ? "text-lg" : "text-neutral-900"}`}>{row.price}</div>
-                  </div>
-                  <div className="hidden sm:block">
-                    <div className={`text-sm ${row.highlight ? "text-neutral-800" : "text-neutral-400"}`}>5 locations/year</div>
-                    <div className={`font-heading font-bold ${row.highlight ? "text-lg" : "text-neutral-900"}`}>{row.annual5}</div>
+            <div className="space-y-3">
+              {[
+                { name: "Envoy", price: "$109-329/mo", annual5: "$6,540-19,740", highlight: false },
+                { name: "iLobby", price: "$199/mo", annual5: "$11,940", highlight: false },
+                { name: "Greetly", price: "$99/mo", annual5: "$5,940", highlight: false },
+                { name: "SwipedOn", price: "$55-169/mo", annual5: "$3,300-10,140", highlight: false },
+                { name: "VMS", price: "$36-90/mo", annual5: "$2,160-5,400", highlight: true },
+              ].map((row) => (
+                <div
+                  key={row.name}
+                  className={`flex items-center justify-between rounded-xl px-6 py-4 transition-all ${
+                    row.highlight
+                      ? "bg-gradient-to-r from-accent-500 to-accent-400 text-slate-950 font-bold shadow-md shadow-accent-500/20"
+                      : "bg-white border border-slate-200/80 hover:shadow-sm"
+                  }`}
+                >
+                  <span className={`font-semibold ${row.highlight ? "" : "text-slate-700"}`}>
+                    {row.name}
+                    {row.highlight && <TrendingDown className="w-4 h-4 inline-block ml-1.5 -mt-0.5" />}
+                  </span>
+                  <div className="flex gap-8 text-right">
+                    <div>
+                      <div className={`text-xs ${row.highlight ? "text-slate-800" : "text-slate-500"}`}>Per location</div>
+                      <div className={`font-heading font-bold ${row.highlight ? "text-lg" : "text-slate-900"}`}>{row.price}</div>
+                    </div>
+                    <div className="hidden sm:block">
+                      <div className={`text-xs ${row.highlight ? "text-slate-800" : "text-slate-500"}`}>5 locations/year</div>
+                      <div className={`font-heading font-bold ${row.highlight ? "text-lg" : "text-slate-900"}`}>{row.annual5}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          <div className="mt-6 rounded-xl bg-primary-50 border border-primary-100 px-6 py-4 text-center">
-            <span className="text-sm text-neutral-600">
-              Switch from Envoy to VMS and{" "}
-              <span className="font-bold text-primary-700">save $4,380+ per year</span>{" "}
-              across 5 locations.
-            </span>
+            <div className="mt-6 rounded-xl bg-slate-50 border border-slate-100 px-6 py-4 text-center">
+              <span className="text-sm text-slate-600">
+                Switch from Envoy to VMS and{" "}
+                <span className="font-bold text-cyan-700">save $4,380+ per year</span>{" "}
+                across 5 locations.
+              </span>
+            </div>
           </div>
-        </div>
+        </AnimateIn>
       </Section>
 
       {/* FAQ */}
       <Section background="white">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10">
-            <SectionLabel>FAQ</SectionLabel>
-            <SectionTitle>Frequently Asked Questions</SectionTitle>
-          </div>
+        <AnimateIn>
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <SectionLabel>FAQ</SectionLabel>
+              <SectionTitle>Frequently Asked Questions</SectionTitle>
+            </div>
 
-          <div className="space-y-4">
-            {pricingFAQs.map((faq) => (
-              <div
-                key={faq.question}
-                className="rounded-2xl border border-neutral-200 bg-white p-6"
-              >
-                <h3 className="text-base font-bold text-neutral-900 font-heading">
-                  {faq.question}
-                </h3>
-                <p className="mt-2 text-sm text-neutral-500 leading-relaxed">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
+            <div className="space-y-4">
+              {pricingFAQs.map((faq) => (
+                <div
+                  key={faq.question}
+                  className="rounded-2xl border border-slate-200/80 bg-white p-6 hover:shadow-sm transition-shadow"
+                >
+                  <h3 className="text-base font-bold text-slate-900 font-heading flex items-start gap-2">
+                    <HelpCircle className="w-5 h-5 text-cyan-500 mt-0.5 shrink-0" />
+                    {faq.question}
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-500 leading-relaxed ml-7">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </AnimateIn>
       </Section>
     </>
   );

@@ -1,28 +1,15 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
-
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://visitormanagement.us"),
   title: {
     default: "VMS - Visitor Management System | Digital Check-In from $36/mo",
-    template: "%s | VMS - Visitor Management System",
+    template: "%s | VMS",
   },
   description:
     "The visitor management system that does more for less. Digital check-in, badge printing, host notifications & compliance-ready records. 6 modules, one platform. Starting at $36/month.",
@@ -33,6 +20,7 @@ export const metadata: Metadata = {
     "visitor check-in system",
     "queue management system",
     "workplace management",
+    "envoy alternative",
   ],
   authors: [{ name: "VMS" }],
   creator: "VMS",
@@ -41,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://visitormanagement.us",
-    siteName: "VMS - Visitor Management System",
+    siteName: "VMS",
     title: "VMS - Visitor Management System | Digital Check-In from $36/mo",
     description:
       "The visitor management system that does more for less. 6 workplace modules, one platform. Starting at $36/month.",
@@ -73,9 +61,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakarta.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${GeistSans.variable} ${GeistMono.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-neutral-50 text-neutral-600">
+      <body className="grain min-h-full flex flex-col bg-white text-slate-600 antialiased">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

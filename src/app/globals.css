@@ -1,81 +1,345 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* ── Primary: Deep Teal ── */
-  --color-primary-50: #F0FDFA;
-  --color-primary-100: #CCFBF1;
-  --color-primary-200: #99F6E4;
-  --color-primary-300: #5EEAD4;
-  --color-primary-400: #2DD4BF;
-  --color-primary-500: #14AEA8;
-  --color-primary-600: #0F9690;
-  --color-primary-700: #0E7C7B;
-  --color-primary-800: #085C5A;
-  --color-primary-900: #063B3A;
-  --color-primary-950: #042F2E;
+  /* ── BRAND: Deep navy for text authority ── */
+  --color-navy-50: #F0F4FF;
+  --color-navy-100: #E0E8FF;
+  --color-navy-200: #C7D4FE;
+  --color-navy-300: #A3B5FC;
+  --color-navy-400: #7B8FF8;
+  --color-navy-500: #5B6BF0;
+  --color-navy-600: #4149E4;
+  --color-navy-700: #3538C9;
+  --color-navy-800: #2D30A2;
+  --color-navy-900: #0F1629;
+  --color-navy-950: #0A0F1C;
 
-  /* ── Accent: Amber Gold ── */
-  --color-accent-50: #FFFBEB;
-  --color-accent-100: #FEF3C7;
-  --color-accent-200: #FDE68A;
-  --color-accent-300: #FCD34D;
-  --color-accent-400: #FBBF24;
-  --color-accent-500: #F59E0B;
-  --color-accent-600: #D97706;
-  --color-accent-700: #B45309;
-  --color-accent-800: #92400E;
-  --color-accent-900: #78350F;
-  --color-accent-950: #451A03;
+  /* ── CYAN: Premium teal accent ── */
+  --color-cyan-50: #ECFFFE;
+  --color-cyan-100: #CFFFFE;
+  --color-cyan-200: #A5FFFC;
+  --color-cyan-300: #67FFF8;
+  --color-cyan-400: #22F2E6;
+  --color-cyan-500: #00D4AA;
+  --color-cyan-600: #00B492;
+  --color-cyan-700: #028E76;
+  --color-cyan-800: #087160;
+  --color-cyan-900: #0C5D50;
+  --color-cyan-950: #003B34;
 
-  /* ── Neutral: Warm Slate ── */
-  --color-neutral-50: #F8FAFC;
-  --color-neutral-100: #F1F5F9;
-  --color-neutral-200: #E2E8F0;
-  --color-neutral-300: #CBD5E1;
-  --color-neutral-400: #94A3B8;
-  --color-neutral-500: #64748B;
-  --color-neutral-600: #475569;
-  --color-neutral-700: #334155;
-  --color-neutral-800: #1E293B;
-  --color-neutral-900: #131C2E;
-  --color-neutral-950: #0C1220;
+  /* ── SLATE: Cool neutral grays ── */
+  --color-slate-50: #F8FAFC;
+  --color-slate-100: #F1F5F9;
+  --color-slate-200: #E2E8F0;
+  --color-slate-300: #CBD5E1;
+  --color-slate-400: #94A3B8;
+  --color-slate-500: #64748B;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
+  --color-slate-950: #020617;
+
+  /* ── PRIMARY: Maps to slate for authority ── */
+  --color-primary-50: #F8FAFC;
+  --color-primary-100: #F1F5F9;
+  --color-primary-200: #E2E8F0;
+  --color-primary-300: #CBD5E1;
+  --color-primary-400: #94A3B8;
+  --color-primary-500: #475569;
+  --color-primary-600: #334155;
+  --color-primary-700: #1E293B;
+  --color-primary-800: #0F172A;
+  --color-primary-900: #020617;
+
+  /* ── ACCENT: Maps to cyan for highlights ── */
+  --color-accent-50: #ECFFFE;
+  --color-accent-100: #CFFFFE;
+  --color-accent-200: #A5FFFC;
+  --color-accent-300: #67FFF8;
+  --color-accent-400: #22F2E6;
+  --color-accent-500: #00D4AA;
+  --color-accent-600: #00B492;
+  --color-accent-700: #028E76;
+  --color-accent-800: #087160;
+  --color-accent-900: #0C5D50;
 
   /* ── Semantic ── */
-  --color-success: #059669;
+  --color-success: #10B981;
   --color-success-light: #D1FAE5;
-  --color-warning: #D97706;
+  --color-warning: #F59E0B;
   --color-warning-light: #FEF3C7;
-  --color-error: #DC2626;
+  --color-error: #EF4444;
   --color-error-light: #FEE2E2;
-  --color-info: #0284C7;
-  --color-info-light: #E0F2FE;
+  --color-info: #3B82F6;
+  --color-info-light: #DBEAFE;
 
   /* ── Typography ── */
-  --font-heading: var(--font-plus-jakarta);
-  --font-body: var(--font-dm-sans);
+  --font-heading: var(--font-geist-sans);
+  --font-body: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 /* ── Base Styles ── */
 body {
-  background-color: var(--color-neutral-50);
-  color: var(--color-neutral-600);
-  font-family: var(--font-body), system-ui, sans-serif;
+  background-color: #FFFFFF;
+  color: var(--color-slate-600);
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading), system-ui, sans-serif;
-  color: var(--color-neutral-900);
-  letter-spacing: -0.025em;
-  line-height: 1.15;
+  color: var(--color-slate-950);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
-/* ── Smooth scroll ── */
 html {
   scroll-behavior: smooth;
 }
 
-/* ── Selection color ── */
 ::selection {
-  background-color: var(--color-primary-200);
-  color: var(--color-primary-950);
+  background-color: rgba(0, 212, 170, 0.15);
+  color: var(--color-slate-950);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-slate-300); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-slate-400); }
+
+/* ── Focus ── */
+*:focus-visible {
+  outline: 2px solid var(--color-cyan-500);
+  outline-offset: 2px;
+}
+
+/* ── Animations ── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes grid-pulse {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.06; }
+}
+
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.3; filter: blur(60px); }
+  50% { opacity: 0.5; filter: blur(80px); }
+}
+
+@keyframes draw-line {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes counter-fill {
+  from { width: 0%; }
+  to { width: var(--fill-width); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+  background-size: 200% 100%;
+}
+
+.animate-draw {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-line 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Gradient mesh background (light) ── */
+.gradient-mesh {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0, 212, 170, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(0, 212, 170, 0.03) 0%, transparent 50%);
+}
+
+/* ── Hero gradient mesh - subtle warm light ── */
+.gradient-mesh-hero {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(0, 212, 170, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246, 0.03) 0%, transparent 60%);
+}
+
+/* ── Dot grid background (light) ── */
+.dot-grid {
+  background-image: radial-gradient(circle, var(--color-slate-200) 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+}
+
+/* ── Grid pattern for cards ── */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dot-grid-subtle {
+  background-image: radial-gradient(circle, var(--color-slate-200) 0.4px, transparent 0.4px);
+  background-size: 32px 32px;
+}
+
+/* ── Glass card effect (light) ── */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+/* ── Grain texture overlay ── */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ── Gradient text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #028E76 0%, #065F46 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Accent glow orb (soft, for light backgrounds) ── */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: glow-breathe 6s ease-in-out infinite;
+}
+
+/* ── Browser mockup frame ── */
+.browser-frame {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.06),
+    0 25px 50px -12px rgba(0, 0, 0, 0.12),
+    0 12px 24px -8px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Prose for blog ── */
+.prose-vms h2 { margin-top: 2.5em; margin-bottom: 0.75em; }
+.prose-vms a { color: var(--color-cyan-700); text-decoration: underline; text-underline-offset: 2px; }
+.prose-vms a:hover { color: var(--color-cyan-800); }
+.prose-vms code { background: var(--color-slate-100); padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.85em; font-family: var(--font-mono); }
+.prose-vms blockquote { border-left: 2px solid var(--color-cyan-500); padding-left: 1.25em; font-style: italic; color: var(--color-slate-700); }
+
+/* ── Stitch Design System (Light Theme) ── */
+
+/* Subtle border for cards */
+.card-border {
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Tinted shadows */
+.shadow-cyan {
+  box-shadow: 0 8px 32px rgba(0, 212, 170, 0.08);
+}
+.shadow-cyan-strong {
+  box-shadow: 0 10px 20px rgba(0, 212, 170, 0.15);
+}
+
+/* Elevated card shadow */
+.shadow-elevated {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.shadow-elevated-hover {
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    0 12px 40px rgba(0, 0, 0, 0.04);
+}
+
+/* Surface hierarchy for light sections (tonal stacking) */
+.surface-0 { background-color: #FFFFFF; }
+.surface-1 { background-color: #F8FAFC; }
+.surface-2 { background-color: #F1F5F9; }
+.surface-3 { background-color: #E2E8F0; }
+
+/* Section divider wave */
+.wave-divider {
+  position: relative;
+}
+.wave-divider::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: inherit;
+  clip-path: ellipse(55% 100% at 50% 100%);
 }

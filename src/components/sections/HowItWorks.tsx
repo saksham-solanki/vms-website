@@ -1,87 +1,111 @@
-import { Section, SectionLabel, SectionTitle, SectionDescription } from "@/components/ui/Section";
+"use client";
+
+import { motion } from "framer-motion";
+import { CheckInFlowIllustration } from "@/components/illustrations/CheckInFlow";
+import { AnimateIn } from "@/components/ui/AnimateIn";
+import { Lightning } from "@phosphor-icons/react";
 
 const steps = [
   {
-    number: "01",
-    title: "Visitor Checks In",
-    description:
-      "Guests scan a QR code, use a kiosk, or pre-register online. No paper, no waiting.",
-    icon: (
-      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-      </svg>
-    ),
+    step: "01",
+    title: "Scan",
+    desc: "Guests scan a QR code, use a kiosk, or pre-register online",
+    color: "text-cyan-700",
+    borderColor: "border-cyan-200/60",
+    bgColor: "bg-cyan-50",
+    dotColor: "bg-cyan-600",
+    time: "0s",
   },
   {
-    number: "02",
-    title: "Host Gets Notified",
-    description:
-      "Instant alerts via Slack, SMS, email, or Microsoft Teams. Hosts know exactly when their guest arrives.",
-    icon: (
-      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-      </svg>
-    ),
+    step: "02",
+    title: "Verify",
+    desc: "ID verification, NDA signing, and watchlist screening",
+    color: "text-blue-600",
+    borderColor: "border-blue-200/60",
+    bgColor: "bg-blue-50",
+    dotColor: "bg-blue-600",
+    time: "5s",
   },
   {
-    number: "03",
-    title: "Badge Printed",
-    description:
-      "Professional visitor badges with photo, name, host, and access level. Printed in seconds.",
-    icon: (
-      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
-      </svg>
-    ),
+    step: "03",
+    title: "Badge",
+    desc: "Professional visitor badges printed in seconds",
+    color: "text-cyan-700",
+    borderColor: "border-cyan-200/60",
+    bgColor: "bg-cyan-50",
+    dotColor: "bg-cyan-600",
+    time: "8s",
   },
   {
-    number: "04",
-    title: "Audit Trail Saved",
-    description:
-      "Every visit is logged with timestamps, signatures, and NDA records. Export compliance reports instantly.",
-    icon: (
-      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
+    step: "04",
+    title: "Notify",
+    desc: "Instant host alerts via Slack, SMS, email, or Teams",
+    color: "text-amber-600",
+    borderColor: "border-amber-200/60",
+    bgColor: "bg-amber-50",
+    dotColor: "bg-amber-600",
+    time: "12s",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <Section background="white" id="how-it-works">
-      <div className="text-center max-w-3xl mx-auto">
-        <SectionLabel>How It Works</SectionLabel>
-        <SectionTitle>Go Live in Under 5 Minutes</SectionTitle>
-        <SectionDescription className="mx-auto">
-          From setup to your first visitor check-in, VMS gets you running faster
-          than any competitor. No hardware required.
-        </SectionDescription>
-      </div>
+    <section className="py-14 md:py-20 bg-white relative overflow-hidden" id="how-it-works">
+      {/* Gradient mesh */}
+      <div className="absolute inset-0 gradient-mesh" />
 
-      <div className="mt-16 grid md:grid-cols-4 gap-8">
-        {steps.map((step, index) => (
-          <div key={step.number} className="relative text-center md:text-left">
-            {/* Connector line */}
-            {index < steps.length - 1 && (
-              <div className="hidden md:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-px bg-neutral-200" />
-            )}
-
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-50 text-primary-700 mb-4">
-              {step.icon}
-            </div>
-            <div className="text-xs font-bold text-primary-500 font-heading mb-1">
-              STEP {step.number}
-            </div>
-            <h3 className="text-lg font-bold text-neutral-900 font-heading">
-              {step.title}
-            </h3>
-            <p className="mt-2 text-sm text-neutral-500 leading-relaxed">
-              {step.description}
+      <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+        <AnimateIn>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-xs font-medium text-cyan-700 mb-6">
+              <Lightning size={14} weight="fill" />
+              How it works
+            </span>
+            <h2 className="text-3xl md:text-5xl lg:text-[56px] font-bold text-slate-950 tracking-[-0.03em] leading-[1.05]">
+              Go live in under 5 minutes
+            </h2>
+            <p className="mt-5 text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+              From setup to your first visitor check-in, VMS gets you running
+              faster than any competitor. No hardware required.
             </p>
           </div>
-        ))}
+        </AnimateIn>
+
+        {/* Illustration */}
+        <AnimateIn animation="fade-in-up" delay={200}>
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 backdrop-blur-sm p-6 md:p-10">
+            <CheckInFlowIllustration className="w-full h-auto max-w-4xl mx-auto" />
+          </div>
+        </AnimateIn>
+
+        {/* Step descriptions with staggered animations */}
+        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+          {steps.map((item, i) => (
+            <motion.div
+              key={item.step}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 0.5 }}
+              className={`text-center md:text-left rounded-xl ${item.bgColor} border ${item.borderColor} p-4`}
+            >
+              <div className="flex items-center gap-2 justify-center md:justify-start mb-2">
+                <div className={`w-2 h-2 rounded-full ${item.dotColor}`} />
+                <span className={`text-xs font-bold ${item.color} tabular-nums`}>
+                  Step {item.step}
+                </span>
+                <span className="text-[10px] text-slate-400 ml-auto tabular-nums">{item.time}</span>
+              </div>
+              <h3 className="text-lg font-semibold text-slate-900">
+                {item.title}
+              </h3>
+              <p className="mt-1 text-sm text-slate-600 leading-relaxed">
+                {item.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }

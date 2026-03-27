@@ -10,6 +10,7 @@ import { Security } from "@/components/sections/Security";
 import { Integrations } from "@/components/sections/Integrations";
 import { BlogFeed } from "@/components/sections/BlogFeed";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { StatsStrip } from "@/components/sections/StatsStrip";
 import { OrganizationSchema, WebsiteSchema, SoftwareSchema } from "@/components/seo/JsonLd";
 
 export default function HomePage() {
@@ -21,6 +22,7 @@ export default function HomePage() {
       <HeroSection />
       <LogoBar />
       <ProblemSolution />
+      <StatsStrip />
       <HowItWorks />
       <ProductModules />
       <SocialProof />

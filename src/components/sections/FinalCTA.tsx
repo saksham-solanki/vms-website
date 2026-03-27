@@ -1,42 +1,70 @@
-import { Section } from "@/components/ui/Section";
-import { Button } from "@/components/ui/Button";
+"use client";
+
+import Link from "next/link";
+import { ArrowRight, ShieldCheck, Timer, CreditCard } from "@phosphor-icons/react";
+import { AnimateIn } from "@/components/ui/AnimateIn";
 
 export function FinalCTA() {
   return (
-    <Section background="tint">
-      <div className="text-center max-w-2xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-neutral-900 font-heading">
-          Ready to modernize your front desk?
-        </h2>
-        <p className="mt-4 text-lg text-neutral-500">
-          Join 2,000+ workplaces that replaced paper logbooks and overpriced
-          software with VMS. Start free, upgrade when you&apos;re ready.
-        </p>
+    <section className="py-14 md:py-20 bg-slate-50 relative">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+        <AnimateIn>
+          {/* Contained cyan gradient card */}
+          <div className="relative rounded-3xl bg-gradient-to-br from-cyan-600 via-cyan-700 to-cyan-800 p-10 md:p-16 overflow-hidden">
+            {/* Subtle white glow */}
+            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-white/10 rounded-full blur-[100px]" />
+            <div className="absolute bottom-0 left-1/4 w-[300px] h-[300px] bg-white/10 rounded-full blur-[100px]" />
 
-        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-          <Button variant="primary" size="lg" href="/demo">
-            Book a Demo
-          </Button>
-          <Button variant="secondary" size="lg" href="/free-trial">
-            Start Free Trial
-          </Button>
-        </div>
+            <div className="relative grid md:grid-cols-[1fr_auto] gap-10 items-center">
+              {/* Left: Copy - left-aligned, NOT centered */}
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white tracking-[-0.03em] leading-[1.1]">
+                  Replace your paper logbook <br className="hidden md:block" />
+                  in the next 5 minutes
+                </h2>
+                <p className="mt-4 text-base text-cyan-100 leading-relaxed max-w-lg">
+                  Join 2,000+ workplaces that switched to digital visitor management.
+                  Start free, upgrade when you need more.
+                </p>
 
-        <p className="mt-4 text-sm text-neutral-400">
-          No credit card required &middot; 14-day free trial &middot; Cancel anytime
-        </p>
+                {/* Trust signals as inline badges */}
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {[
+                    { icon: CreditCard, text: "No credit card" },
+                    { icon: Timer, text: "14-day free trial" },
+                    { icon: ShieldCheck, text: "Cancel anytime" },
+                  ].map((item) => (
+                    <span
+                      key={item.text}
+                      className="inline-flex items-center gap-1.5 text-xs text-cyan-100 bg-white/10 border border-white/15 rounded-full px-3 py-1.5"
+                    >
+                      <item.icon size={12} weight="duotone" className="text-white" />
+                      {item.text}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-        <div className="mt-8 flex items-center justify-center gap-6 text-sm text-neutral-500">
-          <span className="flex items-center gap-1.5">
-            <svg className="w-4 h-4 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            4.9/5 on Capterra
-          </span>
-          <span>2,000+ workplaces</span>
-          <span>Setup in 5 minutes</span>
-        </div>
+              {/* Right: Stacked CTAs */}
+              <div className="flex flex-col gap-3">
+                <Link
+                  href="/free-trial"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white text-cyan-800 text-base font-semibold shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:bg-cyan-50 hover:shadow-[0_8px_30px_rgba(255,255,255,0.25)] transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  Start free trial
+                  <ArrowRight size={16} weight="bold" className="group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+                <Link
+                  href="/demo"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/25 text-white text-sm font-medium hover:bg-white/10 transition-all duration-300"
+                >
+                  Book a demo
+                </Link>
+              </div>
+            </div>
+          </div>
+        </AnimateIn>
       </div>
-    </Section>
+    </section>
   );
 }
